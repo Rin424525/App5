@@ -7,7 +7,7 @@ namespace App5
     public class Janr
     {
         public string Name { get; set; }
-
+       
         public int Id { get; set; }
     }
 }

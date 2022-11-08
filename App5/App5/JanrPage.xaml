@@ -4,10 +4,18 @@
              x:Class="App5.JanrPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry x:Name="entryName" Placeholder="Название" />
-            <Button Text="Сохранить" Clicked="Button_Save"/>
-            <Button Text="Удалить" Clicked="Button_Dell"/>
-            <Button Text="Добавить" Clicked="Button_Add"/>
+            <CollectionView x:Name="collectionView"
+                        SelectionMode="Single"
+                        SelectionChanged="collectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontSize="Large" Text="{Binding Id}"/>
+                            <Label FontSize="Large" Text="{Binding Name}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

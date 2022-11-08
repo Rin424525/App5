@@ -10,38 +10,39 @@ namespace App5
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class JanrPage : ContentPage
-    {
-        public Database Database { get; set; }
-        public Janr Janr { get; set; }
-
-        public JanrPage(Database database, Janr janr)
+    { 
+        public JanrPage()
         {
             InitializeComponent();
-            Database = database;
-            entryName.Text = janr.Name;
-            Janr = janr;
+            GetItemsToCollection();
+            GoToLoginForm();
         }
 
-        private async void Button_Save(object sender, EventArgs e)
+        private async void GoToLoginForm()
         {
-            Janr.Name = entryName.Text;
-            await Database.EditJanr(Janr);
-            await Navigation.PopAsync();
+            await Shell.Current.GoToAsync("//LoginForm");
+        }
+        private async void GetItemsToCollection()
+        {
+           collectionView.ItemsSource = await App.Database.GetJanrs();
         }
 
 
-        private async void Button_Dell(object sender, EventArgs e)
+        private void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
         {
-            Janr.Name = entryName.Text;
-            await Database.DeleteJanr(Janr);
-            await Navigation.PopAsync();
+           // if (collectionView.SelectedItem != null)
+                Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId" +
+                    $"{((Janr)collectionView.SelectedItem).Id}");
+            //else
+                //return;
         }
 
-        private async void Button_Add(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            Janr newJanr = new Janr { Name = entryName.Text };
-            await Database.AddJanr(newJanr);
-            await Navigation.PopAsync();
+            collectionView.ItemsSource = new List<Serial>();
+            collectionView.ItemsSource = await App.Database.GetJanrs();
+            collectionView.SelectedItem = null;
+            base.OnAppearing();
         }
     }
 }

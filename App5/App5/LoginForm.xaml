@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App5.LoginForm">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Авторизация"/>
+            <Label Text="Логин"/>
+            <Entry x:Name="Login" />
+            <Label Text="Пароль"/>
+            <Entry x:Name="Password"/>
+            <Button Text="Войти" Clicked="Entry_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

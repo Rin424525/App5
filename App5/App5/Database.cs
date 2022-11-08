@@ -8,102 +8,106 @@ namespace App5
     public class Database
     {
         private List<Janr> janrs = new List<Janr>();
-        private List<Item> film = new List<Item>();
+        private List<Serial> serials = new List<Serial>();
         private int autoincriment = 4;
         private int autoincrimentjanr = 4;
 
 
         public Database()
         {
-            Item item = new Item
+            Janr item = new Janr
             {
                 Id = 1,
-                Name = "один дома"
+                Name = "Комедия"
             };
 
-            Item item2 = new Item
+            Janr item1 = new Janr
             {
                 Id = 2,
-                Name = "азер в россии"
-            };
-
-            Item item3 = new Item
-            {
-                Id = 3,
-                Name = "моя жизнь"
-            };
-            film.Add(item);
-            film.Add(item2);
-            film.Add(item3);
-
-            Janr janr = new Janr
-            {
-                Id = 1,
                 Name = "драмма"
             };
 
-            Janr janr1 = new Janr
-            {
-                Id = 2,
-                Name = "ужасы"
-            };
 
-            Janr janr2 = new Janr
+            Janr item2 = new Janr
             {
                 Id = 3,
-                Name = "семейное"
+                Name = "ужасы"
             };
-            janrs.Add(janr);
-            janrs.Add(janr1);
-            janrs.Add(janr2);
+            janrs.Add(item);
+            janrs.Add(item1);
+            janrs.Add(item2);
+
+            Serial serial = new Serial
+            {
+                Id = 1,
+                Name = "Один дома",
+                JanrId = 1
+            };
+
+            Serial serial1 = new Serial
+            {
+                Id = 2,
+                Name = "кино типа серипл ",
+                JanrId = 2
+            };
+
+            Serial serial2 = new Serial
+            {
+                Id = 3,
+                Name = "ктоя",
+                JanrId = 3
+            };
+            serials.Add(serial);
+            serials.Add(serial1);
+            serials.Add(serial2);
 
         }
 
-        public Task<List<Item>> GetItems()
+        public Task<List<Serial>> GetSerials() //получить все сериалы из коллекции
         {
-            return Task.FromResult(film);
+            return Task.FromResult(serials);
         }
-        public Task<Item> GetItem(int id)
-        {
-            return Task.FromResult(film.Find(s => s.Id == id));
-        }
-        public Task AddItem(Item item)
-        {
-            item.Id = autoincriment++;
-            film.Add(item);
-            return Task.CompletedTask;
-        }
-        public async Task EditItem(Item item)
-        {
-            Item oldItem = await GetItem(item.Id);
-            oldItem = item;
-        }
-        public  Task DeleteItem(Item item)
-        {
-            film.Remove(item);
-            return Task.CompletedTask;
-        }
-        //для жанров
-        public Task<List<Janr>> GetJanr()
+        public Task<List<Janr>> GetJanrs()//порлучить все жанры из коллекции
         {
             return Task.FromResult(janrs);
         }
-        public Task<Janr> GetJanr(int id)
+        public Task AddSerial(Serial serial) //добавить новый serial 
         {
-            return Task.FromResult(janrs.Find(s => s.Id == id));
+            serial.Id = autoincriment++;
+            serials.Add(serial);
+            return Task.CompletedTask;
         }
-        public Task AddJanr(Janr janr)
+        public Task AddJanr(Janr janr)//добавить новый жанр 
         {
             janr.Id = autoincrimentjanr++;
             janrs.Add(janr);
             return Task.CompletedTask;
         }
-        public async Task EditJanr(Janr janr)
+        public Task<Janr> GetJanr(int id) //получить конкретный jannr 
         {
-            Janr oldJanr = await GetJanr(janr.Id);
-            oldJanr = janr;
+            return Task.FromResult(janrs.Find(s => s.Id == id));
         }
-        public Task DeleteJanr(Janr janr)
+        public Task<Serial> GetSerial(int id) //получить конкретный сериал
+        {
+            return Task.FromResult(serials.Find(s => s.Id == id));
+        }       
+        public async Task EditSerial(Serial serial)//редактировать сериал
+        {
+            Serial oldSerial = await GetSerial(serial.Id);
+            oldSerial = serial;
+        }
+        public async Task EditJanr(Janr janr)//редактировать сериал
+        {
+            Janr oldSerial = await GetJanr(janr.Id);
+            oldSerial = janr;
+        }
+        public Task DeleteSerial(Serial serial)//удалить сериал
+        {
+            serials.Remove(serial);
+            return Task.CompletedTask;
+        }       
+
+        public Task DeleteJanr(Janr janr)//удалить жанр
         {
             janrs.Remove(janr);
             return Task.CompletedTask;
