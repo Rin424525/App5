@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App5.Serials;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace App5
                 SerialId = value;
                 if (serialId != 0)
                 {
-                    SetJanr();
+                    SetSerial();
                 }               
             }
         }
@@ -32,7 +33,7 @@ namespace App5
         {
             InitializeComponent();
         }
-        private async void SetJanr()
+        private async void SetSerial()
         {
             await App.Database.GetSerial(SerialId);
         }

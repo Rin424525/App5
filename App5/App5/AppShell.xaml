@@ -5,14 +5,12 @@
              x:Class="App5.AppShell">
 
 
-    <FlyoutItem>
+    <FlyoutItem Title="Жанры">
         <ShellContent Title="1vcv" Route="JanrPage" ContentTemplate="{DataTemplate local:JanrPage}"/>
     </FlyoutItem>
-    
-    <FlyoutItem>
+    <FlyoutItem Title="Сериалы" >
         <ShellContent Title="1vcv"  Route="SerialPage" ContentTemplate="{DataTemplate local:SerialPage}"/>
     </FlyoutItem>
-   
     <MenuItem Text="Выйти" Clicked="MenuItem_Clicked"/>
     <TabBar>
         <ShellContent Title="1vcv"  Route="LoginForm" ContentTemplate="{DataTemplate local:LoginForm}"/>

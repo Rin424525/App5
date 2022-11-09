@@ -19,8 +19,8 @@ namespace App5
 
         private void Entry_Clicked(object sender, EventArgs e)
         {
-            string login = "admin";
-            string password = "123456";
+            string login = "111";
+            string password = "111";
 
             if (login == Login.Text && password == Password.Text)
             {

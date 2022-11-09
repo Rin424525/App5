@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App5.Janrs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,32 +15,22 @@ namespace App5
         public JanrPage()
         {
             InitializeComponent();
-            GetItemsToCollection();
-            GoToLoginForm();
+            GetItemsToCollection();          
         }
 
-        private async void GoToLoginForm()
-        {
-            await Shell.Current.GoToAsync("//LoginForm");
-        }
         private async void GetItemsToCollection()
         {
            collectionView.ItemsSource = await App.Database.GetJanrs();
         }
 
-
         private void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
         {
-           // if (collectionView.SelectedItem != null)
-                Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId" +
-                    $"{((Janr)collectionView.SelectedItem).Id}");
-            //else
-                //return;
+            Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId{((Janr)collectionView.SelectedItem).Id}");
         }
 
         protected override async void OnAppearing()
         {
-            collectionView.ItemsSource = new List<Serial>();
+            collectionView.ItemsSource = new List<Janr>();
             collectionView.ItemsSource = await App.Database.GetJanrs();
             collectionView.SelectedItem = null;
             base.OnAppearing();

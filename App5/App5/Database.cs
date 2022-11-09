@@ -1,7 +1,10 @@
-﻿using System;
+﻿using App5.Janrs;
+using App5.Serials;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace App5
 {
@@ -60,7 +63,12 @@ namespace App5
             serials.Add(serial);
             serials.Add(serial1);
             serials.Add(serial2);
+            GoToLoginForm();
+        }
 
+        private async void GoToLoginForm()
+        {
+            await Shell.Current.GoToAsync("//LoginForm");
         }
 
         public Task<List<Serial>> GetSerials() //получить все сериалы из коллекции

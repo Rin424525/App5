@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App5.Serials;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ namespace App5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SerialPage : ContentPage
     {
- 
         public SerialPage()
         {
             InitializeComponent();
@@ -23,15 +23,9 @@ namespace App5
             collectionView.ItemsSource = await App.Database.GetSerials();
         }
 
-      
         private void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (collectionView.SelectedItem != null)
-                Shell.Current.GoToAsync($"{nameof(SerialDetails)}?SerialId" +
-                    $"{((Serial)collectionView.SelectedItem).Id}");
-            else
-                return;
-
+        {            
+            Shell.Current.GoToAsync($"{nameof(SerialDetails)}?SerialId{((Serial)collectionView.SelectedItem).Id}");           
         }
 
         protected override async void OnAppearing()
@@ -41,7 +35,5 @@ namespace App5
             collectionView.SelectedItem = null;
             base.OnAppearing();
         }
-
-
     }
 }

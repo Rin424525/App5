@@ -26,13 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="JanrDetails.xaml.cs">
+    <Compile Update="Janrs\JanrDetails.xaml.cs">
       <DependentUpon>JanrDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Update="SerialDetails.xaml.cs">
+    <Compile Update="Serials\SerialDetails.xaml.cs">
       <DependentUpon>SerialDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Update="SerialPage.xaml.cs">
+    <Compile Update="Serials\SerialPage.xaml.cs">
       <DependentUpon>SerialPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -41,16 +41,16 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="JanrDetails.xaml">
+    <EmbeddedResource Update="Janrs\JanrDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="SerialPage.xaml">
+    <EmbeddedResource Update="Serials\SerialPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="SerialDetails.xaml">
+    <EmbeddedResource Update="Serials\SerialDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="JanrPage.xaml">
+    <EmbeddedResource Update="Janrs\JanrPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="LoginForm.xaml">

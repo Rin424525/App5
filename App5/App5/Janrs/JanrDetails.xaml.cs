@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App5.Janrs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace App5
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     [QueryProperty(nameof(JanrId), nameof(JanrId))]
     public partial class JanrDetails : ContentPage
     {
@@ -27,19 +29,16 @@ namespace App5
             }
         }
 
-       
-
         public JanrDetails()
         {
             InitializeComponent();
         }
 
-      
-
         private async void SetJanr()
         {
-            await App.Database.GetSerial(JanrId);
+            await App.Database.GetJanr(JanrId);
         }
+
         private async void Button_Save(object sender, EventArgs e)
         {
             janr.Name = entryName.Text;

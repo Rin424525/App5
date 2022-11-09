@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App5
+namespace App5.Serials
 {
     public class Serial
     {
