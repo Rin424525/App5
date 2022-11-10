@@ -23,9 +23,14 @@ namespace App5
            collectionView.ItemsSource = await App.Database.GetJanrs();
         }
 
-        private void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
+        private async void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
         {
-            Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId{((Janr)collectionView.SelectedItem).Id}");
+            if (collectionView.SelectedItem != null)
+            {
+
+                await Shell.Current.GoToAsync($"{nameof(SerialDetails)}?{nameof(SerialDetails.IdSerial)}={((Janr)collectionView.SelectedItem).Id}");
+                //await Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId{((Janr)collectionView.SelectedItem).Id}");
+            }
         }
 
         protected override async void OnAppearing()

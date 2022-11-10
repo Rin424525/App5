@@ -18,7 +18,7 @@ namespace App5
             Routing.RegisterRoute(nameof(SerialDetails), typeof(SerialDetails));
             Routing.RegisterRoute(nameof(SerialPage), typeof(SerialPage));
             Routing.RegisterRoute(nameof(JanrPage), typeof(JanrPage));
-
+            Routing.RegisterRoute(nameof(JanrDetails), typeof(JanrDetails));
         }
 
         private void MenuItem_Clicked(object sender, EventArgs e)

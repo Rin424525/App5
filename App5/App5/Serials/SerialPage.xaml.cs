@@ -12,6 +12,8 @@ namespace App5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SerialPage : ContentPage
     {
+       // Serial serial = new Serial();
+
         public SerialPage()
         {
             InitializeComponent();
@@ -23,11 +25,14 @@ namespace App5
             collectionView.ItemsSource = await App.Database.GetSerials();
         }
 
-        private void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
-        {            
-            Shell.Current.GoToAsync($"{nameof(SerialDetails)}?SerialId{((Serial)collectionView.SelectedItem).Id}");           
+        private async void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (collectionView.SelectedItem != null)
+            {
+                // await Shell.Current.GoToAsync($"{nameof(SerialDetails)}?{nameof(SerialDetails.SerialId)}={serial.Id}");
+                 await Shell.Current.GoToAsync($"{nameof(SerialDetails)}?SerialId={((Serial)collectionView.SelectedItem).Id}");
+            }
         }
-
         protected override async void OnAppearing()
         {
             collectionView.ItemsSource = new List<Serial>();
