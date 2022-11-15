@@ -106,8 +106,8 @@ namespace App5
         }
         public async Task EditJanr(Janr janr)//редактировать сериал
         {
-            Janr oldSerial = await GetJanr(janr.Id);
-            oldSerial = janr;
+            Janr oldJanr = await GetJanr(janr.Id);
+            oldJanr = janr;
         }
         public Task DeleteSerial(Serial serial)//удалить сериал
         {

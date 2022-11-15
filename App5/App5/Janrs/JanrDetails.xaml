@@ -4,7 +4,7 @@
              x:Class="App5.JanrDetails">
     <ContentPage.Content>
         <StackLayout>
-            <Entry x:Name="entryName" Placeholder="Название" />
+            <Entry x:Name="EntryName" Placeholder="Название" />
             <Button Text="Сохранить" Clicked="Button_Save"/>
             <Button Text="Удалить" Clicked="Button_Dell"/>
             <Button Text="Добавить" Clicked="Button_Add"/>

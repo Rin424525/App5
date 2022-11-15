@@ -26,11 +26,9 @@ namespace App5
         private async void collectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
         {
             if (collectionView.SelectedItem != null)
-            {
-
-                await Shell.Current.GoToAsync($"{nameof(SerialDetails)}?{nameof(SerialDetails.IdSerial)}={((Janr)collectionView.SelectedItem).Id}");
-                //await Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId{((Janr)collectionView.SelectedItem).Id}");
-            }
+                await Shell.Current.GoToAsync($"JanrDetails?{((Janr)collectionView.SelectedItem).Id}");
+            //await Shell.Current.GoToAsync($"{nameof(JanrDetails)}?JanrId{((Janr)collectionView.SelectedItem).Id}");
+            // await Shell.Current.GoToAsync($"{nameof(JanrDetails)}?{nameof(JanrDetails.IdJanr)}={((Janr)collectionView.SelectedItem).Id}");
         }
 
         protected override async void OnAppearing()
